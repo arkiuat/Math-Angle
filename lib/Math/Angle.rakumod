@@ -290,6 +290,15 @@ method normalize(:$range = SYMMETRIC) {
     $!angle = $newangle;
 }
 
+#| Return a normalized clone, leaving the original unmodified.
+method clone-normalized(:$range = SYMMETRIC) {
+    with self.clone {
+        .normalize(:$range);
+        return $_
+    }
+}
+
+
 method Numeric() { $!angle }
 
 #|««
